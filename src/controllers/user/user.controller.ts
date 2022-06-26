@@ -11,7 +11,7 @@ class UserController {
 	createUser = async (req: Request, res: Response) => {
 		const user = await userService.createUser(req);
 
-		return res.status(user.status).json(user.messege);
+		//return res.status(user.status).json(user.messege);
 	};
 
 	getAll = async (request: Request, response: Response) => {
