@@ -6,14 +6,14 @@ import {
 
 
 @Entity("stock")
-export class stock {
+export class Stock {
   @PrimaryGeneratedColumn("uuid")
   stockId?: string;
 
   @Column()
   quantity: number;
 
-  @Column()
+  @Column({type: "float"})
   price: number;
 
 }

@@ -12,16 +12,8 @@ const verifyUserExists = async (
         email: req.body.email,
     });
 
-    const foundCpfUser: User = await userRepository.findOne({
-        cpf: req.body.cpf,
-    });
-
     if (foundEmailUser) {
         throw new ErrorHandler(409, "Email already exists.");
-    }
-
-    if (foundCpfUser) {
-        throw new ErrorHandler(409, "CPF already exists.");
     }
 
     return next();

@@ -5,6 +5,7 @@ import {
 	Column,
 	OneToOne,
 	JoinColumn,
+	OneToMany,
 } from 'typeorm';
 import { Cart } from './Cart';
 
@@ -24,6 +25,10 @@ export class User {
 
 	@Column({ nullable: false })
 	isAdm: boolean;
+
+	@OneToMany(() => Cart, (cart) => cart.user)
+	@JoinColumn()
+	cart: Cart;
 
 	comparePwd = async (pwdString: string): Promise<boolean> => {
 		return await compare(pwdString, this.password);

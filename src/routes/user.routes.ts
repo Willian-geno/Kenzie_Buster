@@ -23,20 +23,7 @@ userRouter.post(
     userController.loginUser
 );
 userRouter.get("", userController.getAll);
-userRouter.get("/:userId", getUserByIdOr404, userController.getById);
-userRouter.patch(
-    "/:userId",
-    validateToken,
-    getUserByIdOr404,
-    userPermission,
-    userController.updateUser
-);
-userRouter.delete(
-    "/:userId",
-    validateToken,
-    getUserByIdOr404,
-    userPermission,
-    userController.deleteUser
-);
+
+
 
 export default userRouter;
