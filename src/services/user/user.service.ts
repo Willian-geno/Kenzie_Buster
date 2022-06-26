@@ -38,8 +38,8 @@ class userService {
 			};
 		}
 
-		const token: string = sign({ ...user }, process.env.SECRET_KEY, {
-			expiresIn: process.env.EXPIRES_IN,
+		const token: string = sign({ ...user }, "1101", {
+			expiresIn: "1h",
 		});
 
 		return {
