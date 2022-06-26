@@ -49,13 +49,8 @@ class userService {
 	};
 
 	createUser = async ({ validated, headers }: Request) => {
-		
-		(validated as User).password = await hash(
-			(validated as User).password,
-			10
-		);
-		const user: User = await userRepository.save(validated as User);
-		/*if (headers.authorization.split(' ')[1]) {
+
+		if (headers.authorization.split(' ')[1]) {
 			verify(
 				headers.authorization.split(' ')[1],
 				process.env.SECRET_KEY,
@@ -111,7 +106,7 @@ class userService {
 				name: 'JsonWebTokenError',
 				message: 'jwt malformed',
 			},
-		};*/
+		};
 	};
 
 	getAll = async () => {
