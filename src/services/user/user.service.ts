@@ -65,6 +65,10 @@ class userService {
 			);
 
 			if (decodedUser.isAdm) {
+				(validated as User).password = await hash(
+				(validated as User).password,
+				10
+			);
 				const user: User = await userRepository.save(validated as User);
 				return {
 					status: 201,
