@@ -1,3 +1,5 @@
-import { userService } from "./user";
+import { userService } from './user';
+import { dvdServices } from './Dvd';
+import { cartSerices } from './cart';
 
-export { userService };
+export { userService, dvdServices, cartSerices };

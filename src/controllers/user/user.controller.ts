@@ -1,42 +1,24 @@
-import { Request, Response } from "express";
-import { userService } from "../../services";
+import { Request, Response } from 'express';
+import { userService } from '../../services';
 
 class UserController {
-    loginUser = async (req: Request, res: Response) => {
-        const { status, message } = await userService.loginUser(req);
+	loginUser = async (req: Request, res: Response) => {
+		const { status, message } = await userService.loginUser(req);
 
-        return res.status(status).json(message);
-    };
+		return res.status(status).json(message);
+	};
 
-    createUser = async (req: Request, res: Response) => {
-        const user = await userService.createUser(req);
+	createUser = async (req: Request, res: Response) => {
+		const user = await userService.createUser(req);
 
-        return res.status(201).json(user);
-    };
+		return res.status(user.status).json(user.messege);
+	};
 
-    getById = async (request: Request, response: Response) => {
-        const user = await userService.getUserById(request);
+	getAll = async (request: Request, response: Response) => {
+		const users = await userService.getAll();
 
-        return response.status(200).json(user);
-    };
-
-    getAll = async (request: Request, response: Response) => {
-        const users = await userService.getAll();
-
-        return response.status(200).json({ users });
-    };
-
-    updateUser = async (request: Request, response: Response) => {
-        const updateUser = await userService.updateUser(request);
-
-        return response.status(200).json(updateUser);
-    };
-
-    deleteUser = async (req: Request, res: Response) => {
-        const { status, message } = await userService.deleteUser(req);
-
-        return res.status(status).json(message);
-    };
+		return response.status(200).json({ users });
+	};
 }
 
 export default new UserController();

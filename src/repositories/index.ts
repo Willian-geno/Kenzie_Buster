@@ -1,5 +1,11 @@
-import userRepository from "./user.repository";
-import cartRepository from "./cart.repository";
-import dvdRepository from "./dvd.repository";
+import userRepository from './user.repository';
+import dvdReposiroty from './dvd.reposiroty';
+import stockRepository from './stock.repository';
+import cartRepository from './cart.repository';
 
-export { userRepository, cartRepository, dvdRepository };
+export {
+	userRepository,
+	cartRepository,
+	dvdReposiroty,
+	stockRepository,
+};

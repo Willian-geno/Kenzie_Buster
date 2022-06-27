@@ -1,22 +1,34 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, OneToOne, JoinColumn } from "typeorm";
-import { Dvd } from "./Dvd";
-import { User } from "./User";
+import {
+	Entity,
+	PrimaryGeneratedColumn,
+	Column,
+	ManyToOne,
+	OneToMany,
+	OneToOne,
+	JoinColumn,
+} from 'typeorm';
+import { Dvd } from './Dvd';
+import { User } from './User';
 
-@Entity("carts")
+@Entity('carts')
 export class Cart {
-  @PrimaryGeneratedColumn("uuid")
-  carId?: string;
+	@PrimaryGeneratedColumn('uuid')
+	carId?: string;
 
-  @Column({ nullable: false })
-  paid: boolean;
+	@Column({ nullable: false })
+	paid: boolean;
 
-  @Column({ nullable: false })
-  total: number;
+	@Column({ nullable: false, type: 'float' })
+	total: number;
 
-	@OneToOne(() => Cart)
+	@ManyToOne(() => User, (user) => user.cart, {
+		lazy: true,
+		eager: true,
+	})
 	@JoinColumn()
 	user: User;
 
-  @OneToMany(() => Dvd, (dvd) => dvd.car, {eager:true})
-  rent: Dvd[];
+	@ManyToOne(() => Dvd, (dvd) => dvd.cart, {eager:true})
+	@JoinColumn()
+	dvd: Dvd;
 }
